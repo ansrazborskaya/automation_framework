@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Acceptance suite">
+    <listeners>
+        <listener class-name="by.stormnet.core.common.AnnotationTransformer"/>
+    </listeners>
+    <test verbose="2" name="Search test">
+        <classes>
+            <class name="project.by.stormnet.functional.tests.LamodaSearchTest"/>
+        </classes>
+    </test>
+</suite>
