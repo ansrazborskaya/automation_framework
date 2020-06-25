@@ -5,6 +5,7 @@ public class HomePage extends AbstractPage {
     private String searchField = "//input[@class = 'text-field text-field_large search__input js-search-field']";
     private String searchButton = "//div[@class = 'search__button-logo']";
 
+
     public static HomePage getHomePage() {
         HomePage homePage = new HomePage();
         waitForElementVisible(getElementBy(logo));
@@ -21,6 +22,8 @@ public class HomePage extends AbstractPage {
         getElement(searchField).sendKeys(searchKey);
         return getHomePage();
     }
+
+
 
     public SearchPage clickSearchButton() {
         getElement(searchButton).click();
