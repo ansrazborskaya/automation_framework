@@ -5,7 +5,7 @@
     </listeners>
     <test verbose="2" name="Search test">
         <classes>
-            <class name="project.by.stormnet.functional.tests.LamodaSearchTest"/>
+            <class name="project.by.stormnet.functional.tests.LamodaTestgit"/>
         </classes>
     </test>
 </suite>
