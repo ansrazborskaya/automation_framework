@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -25,6 +26,7 @@ public class AbstractPage extends FrameworkCore {
         driver.manage().window().maximize();
         driver.get(URL);
     }
+
 
     public static void waitForElementVisible(final By by) {
         try {
@@ -80,5 +82,10 @@ public class AbstractPage extends FrameworkCore {
 
     public List<WebElement> getElements(String xpath) {
         return driver.findElements(By.xpath(xpath));
+    }
+
+    public void placeCursor(String xpath){
+        Actions action = new Actions(driver);
+        action.moveToElement(getElement(xpath)).perform();
     }
 }
