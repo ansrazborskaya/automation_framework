@@ -6,7 +6,14 @@ public class AbstractHelper {
 
     AbstractPage abstractPage = new AbstractPage();
 
+    public void open(){
+        abstractPage.getDriver();
+        abstractPage.openUrl(abstractPage.baseUrl);
+    }
+
+
     public void quit() {
         abstractPage.getDriver().quit();
+
     }
 }
