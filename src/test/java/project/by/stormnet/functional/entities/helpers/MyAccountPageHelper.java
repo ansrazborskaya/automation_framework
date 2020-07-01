@@ -10,4 +10,16 @@ public class MyAccountPageHelper {
         myAccountPage.clickSearchButton();
         return new SearchResultPageHelper();
     }
+
+    public String checkSuccessfulLogin() {
+
+        String result = myAccountPage.checkLogin();
+        doLogout();
+        return result;
+    }
+
+    public LoginPageHelper doLogout(){
+        myAccountPage.clickLogoutButton();
+        return new LoginPageHelper();
+    }
 }

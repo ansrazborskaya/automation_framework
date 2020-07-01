@@ -36,7 +36,6 @@ public class SearchResultPage extends AbstractPage{
     }
 
     public String checkCard(){
-        System.out.println(getElement(checkCard).getText());
         return getElement(checkCard).getText();
     }
 
