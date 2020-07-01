@@ -4,7 +4,12 @@ import project.by.stormnet.functional.entities.pages.AbstractPage;
 
 public class AbstractHelper {
 
-    AbstractPage abstractPage = new AbstractPage();
+    AbstractPage abstractPage;
+
+    public void openBrowser(){
+        abstractPage = new AbstractPage();
+        abstractPage.openBrowser();
+    }
 
     public void open(){
         abstractPage.getDriver();

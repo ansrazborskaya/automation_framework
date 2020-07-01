@@ -2,6 +2,7 @@ package project.by.stormnet.functional.entities.pages;
 
 
 import by.stormnet.core.FrameworkCore;
+import by.stormnet.core.utils.GenerateData;
 import by.stormnet.core.utils.PauseLength;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -16,7 +17,8 @@ import java.util.concurrent.TimeUnit;
 
 public class AbstractPage extends FrameworkCore {
 
-    private static WebDriver driver = getInstance();
+    private static WebDriver driver;
+    private GenerateData generateData = new GenerateData();
 
     public WebDriver getDriver() {
         return driver;
@@ -25,6 +27,10 @@ public class AbstractPage extends FrameworkCore {
     public void openUrl(String URL) {
         driver.manage().window().maximize();
         driver.get(URL);
+    }
+
+    public void openBrowser(){
+        driver = getInstance();
     }
 
 
@@ -37,9 +43,22 @@ public class AbstractPage extends FrameworkCore {
         }
     }
 
-    public void wait(int milliseconds) throws InterruptedException {
-        Thread.sleep(milliseconds);
+    public String generateEmailAddress(){
+       return generateData.generateRandomEmail();
     }
+
+    public String generateRandomValue(){
+        return generateData.generateRandomValue();
+    }
+
+    public String generateRandomPostcode(){
+        return generateData.generateRandomPostcode();
+    }
+
+    public String generateRandomPhone(){
+        return generateData.generateRandomPhone();
+    }
+
 
     public static void waitForElementClickable(final By by) {
         try {

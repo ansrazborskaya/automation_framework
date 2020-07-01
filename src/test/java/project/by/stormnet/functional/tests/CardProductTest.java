@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import project.by.stormnet.functional.entities.helpers.*;
 
-public class CardProductTest extends BaseTest{
+public class CardProductTest extends AbstractTest {
 
     private HomePageHelper homeHelper = new HomePageHelper();
     private LoginPageHelper loginHelper = new LoginPageHelper();
@@ -119,6 +119,4 @@ public class CardProductTest extends BaseTest{
         String actual = cartHelper.checkProductDeletion();
         Assert.assertEquals(actual,expected);
     }
-
-
 }

@@ -3,9 +3,11 @@
     <listeners>
         <listener class-name="by.stormnet.core.common.AnnotationTransformer"/>
     </listeners>
-    <test verbose="2" name="Search test">
+    <test verbose="2" name="Online store tests">
         <classes>
             <class name="project.by.stormnet.functional.tests.CardProductTest"/>
+            <class name="project.by.stormnet.functional.tests.LoginTest"/>
+            <class name="project.by.stormnet.functional.tests.CreateAccountTest"/>
         </classes>
     </test>
 </suite>
