@@ -9,39 +9,39 @@ public class ForgotPasswordPage extends AbstractPage {
     private String successMessage = "//p[@class='alert alert-success']";
     private String errorMessage = "//div[@class='alert alert-danger']";
 
-    public static ForgotPasswordPage getForgotPasswordPage(){
+    public static ForgotPasswordPage getForgotPasswordPage() {
         ForgotPasswordPage forgotPasswordPage = new ForgotPasswordPage();
         waitForElementVisible(getElementBy(title));
         return forgotPasswordPage;
     }
 
-    public ForgotPasswordPage fillEmailField(String email){
+    public ForgotPasswordPage fillEmailField(String email) {
         getElement(emailField).sendKeys(email);
         return getForgotPasswordPage();
     }
 
 
-    public ForgotPasswordPage clickRetrievePasswordButton(){
+    public ForgotPasswordPage clickRetrievePasswordButton() {
         getElement(retrievePasswordButton).click();
         return getForgotPasswordPage();
     }
 
-    public void clickRetrievePasswordButtonError(){
+    public void clickRetrievePasswordButtonError() {
         getElement(retrievePasswordButton).click();
 
     }
 
-    public boolean checkSuccessMessage(){
+    public boolean checkSuccessMessage() {
         waitForElementVisible(getElementBy(successMessage));
         return getElement(successMessage).isDisplayed();
     }
 
-    public boolean checkErrorMessage(){
+    public boolean checkErrorMessage() {
         waitForElementVisible(getElementBy(errorMessage));
         return getElement(errorMessage).isDisplayed();
     }
 
-    public LoginPage clickBackToLoginButton(){
+    public LoginPage clickBackToLoginButton() {
         getElement(backToLoginButton).click();
         return LoginPage.getLoginPage();
     }

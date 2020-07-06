@@ -27,7 +27,7 @@ public class LoginTest extends AbstractTest {
         homeHelper.goToLogin();
     }
 
-    @Test(priority = 1)
+    @Test(priority = 1, description = "Successful login")
     public void successfulLoginTest(){
         String expected = "MY ACCOUNT";
         loginHelper.successfulLogin(email,password);
@@ -36,7 +36,7 @@ public class LoginTest extends AbstractTest {
 
     }
 
-    @Test(priority = 2, dataProvider = "invalidLogin")
+    @Test(priority = 2, dataProvider = "invalidLogin", description = "Login with error")
     public void invalidLoginTest(String email){
         String expected = "There is 1 error";
         loginHelper.failedLogin(email,password);
@@ -44,14 +44,14 @@ public class LoginTest extends AbstractTest {
         Assert.assertEquals(actual,expected);
     }
 
-    @Test(priority = 3)
+    @Test(priority = 3, description = "Use already registered email")
     public void emailAlreadyRegisteredTest(){
         loginHelper.failedCreateAccount(emailError);
         boolean result = loginHelper.checkEmailErrorMessage();
         Assert.assertTrue(result,"Message not displaying");
     }
 
-    @Test(priority = 4)
+    @Test(priority = 4, description = "Password recovery test")
     public void successfulPasswordRecoveryTest(){
         loginHelper.clickForgotPassword();
         passwordHelper.successfulPasswordRecovery(email);
@@ -60,7 +60,7 @@ public class LoginTest extends AbstractTest {
 
     }
 
-    @Test(priority = 5)
+    @Test(priority = 5, description = "Back to login page")
     public void backToLoginTest(){
         String expected = "Authentication";
         loginHelper.clickForgotPassword();
@@ -69,7 +69,7 @@ public class LoginTest extends AbstractTest {
         Assert.assertEquals(actual,expected,"Failed back to login!");
     }
 
-    @Test(priority = 6,dataProvider = "invalidEmail")
+    @Test(priority = 6,dataProvider = "invalidEmail", description = "Failed password recovery")
     public void FailedPasswordRecoveryTest(String invalidEmail){
         loginHelper.clickForgotPassword();
         passwordHelper.failedPasswordRecovery(invalidEmail);
@@ -78,12 +78,12 @@ public class LoginTest extends AbstractTest {
     }
 
     @DataProvider(name = "invalidLogin")
-    public Object[] provideDate(){
+    public Object[][] provideDate(){
         return new Object[][]{{"5ffffff"}, {"bla@bk.ru"},  {"newmail@mail.ru"}, {"56555555"}, {"title@"}};
     }
 
     @DataProvider(name = "invalidEmail")
-    public Object[] invalidEmailDate(){
+    public Object[][] invalidEmailDate(){
         return new Object[][]{{"5ffffff"}, {"@bk.ru"},  {"il.ru"}, {"56555555"}, {"title@"}};
     }
 

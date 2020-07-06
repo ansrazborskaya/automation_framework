@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import project.by.stormnet.functional.entities.helpers.*;
 
+
 public class CardProductTest extends AbstractTest {
 
     private HomePageHelper homeHelper = new HomePageHelper();
@@ -28,14 +29,14 @@ public class CardProductTest extends AbstractTest {
         myAccountHelper.doSearch(search);
     }
 
-    @Test(priority = 1)
+    @Test(priority = 1, description = "Search result test")
     public void checkSearchResultTest() {
         int countPerPage = searchHelper.getSearchResultCountPerPage();
         Assert.assertTrue(countPerPage > 0, "No results were found");
 
     }
 
-    @Test(priority = 2)
+    @Test(priority = 2, description = "Check add item from catalog page")
     public void checkAddingGoodTest() {
         searchHelper.addToCard();
         String quantity = searchHelper.checkCard();
@@ -44,7 +45,7 @@ public class CardProductTest extends AbstractTest {
 
     }
 
-    @Test(priority = 3)
+    @Test(priority = 3, description = "Adding goods to the basket from the product card page")
     public void addProductToCardTest() {
         String expected = "Product successfully added to your shopping cart";
         searchHelper.goProductCard();
@@ -55,7 +56,7 @@ public class CardProductTest extends AbstractTest {
         Assert.assertEquals(actual,expected );
     }
 
-    @Test(priority = 3)
+    @Test(priority = 3,description = "Increase the quantity of goods")
     public void changeQuantityPlusTest(){
 
         productHelper.changeQuantityPlus();
@@ -64,7 +65,7 @@ public class CardProductTest extends AbstractTest {
         Assert.assertTrue(!result.equals("0"));
     }
 
-    @Test(priority = 3)
+    @Test(priority = 3, description = "Reduce the quantity of goods")
     public void changeQuantityMinusTest(){
 
         productHelper.changeQuantityMinus();
@@ -73,7 +74,7 @@ public class CardProductTest extends AbstractTest {
         Assert.assertTrue(!result.equals("0"));
     }
 
-    @Test(priority = 4)
+    @Test(priority = 4, description = "Add to wishlist")
     public void addToWishlistTest(){
         String expected = "Added to your wishlist.";
         productHelper.addToWishlist();
@@ -82,7 +83,7 @@ public class CardProductTest extends AbstractTest {
 
     }
 
-    @Test(priority = 5)
+    @Test(priority = 5, description = "Add new comment")
     public void addCommentTest(){
         String expected = "Your comment has been added and will be available once approved by a moderator";
         productHelper.sendComment(title,text);
@@ -92,7 +93,7 @@ public class CardProductTest extends AbstractTest {
 
 
 
-    @Test(priority = 6)
+    @Test(priority = 6, description = "Go to shopping cart")
     public void goShoppingCartTest(){
         String expected = "Your shopping cart contains: 7 Products";
         productHelper.changeQuantityMinus();
@@ -103,7 +104,7 @@ public class CardProductTest extends AbstractTest {
 
     }
 
-    @Test(priority = 7)
+    @Test(priority = 7,description = "Change total amount")
     public void changeAmountTest(){
         String expected = "$336.92";
         cartHelper.clickReduceButton();
@@ -112,7 +113,7 @@ public class CardProductTest extends AbstractTest {
 
     }
 
-    @Test(priority = 8)
+    @Test(priority = 8, description = "Delete all goods")
     public void deleteTest(){
         String expected = "Your shopping cart is empty.";
         cartHelper.clickDeleteButton();

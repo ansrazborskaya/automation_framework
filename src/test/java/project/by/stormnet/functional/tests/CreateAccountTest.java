@@ -7,6 +7,7 @@ import project.by.stormnet.functional.entities.helpers.HomePageHelper;
 import project.by.stormnet.functional.entities.helpers.LoginPageHelper;
 import project.by.stormnet.functional.entities.helpers.MyAccountPageHelper;
 
+
 public class CreateAccountTest extends AbstractTest {
     private HomePageHelper homeHelper = new HomePageHelper();
     private LoginPageHelper loginHelper = new LoginPageHelper();
@@ -16,7 +17,7 @@ public class CreateAccountTest extends AbstractTest {
     private String email = "testexam@gmail.com";
     private String password = "1234";
 
-    @Test(priority = 1)
+    @Test(priority = 1, description = "Create new account")
     public void successCreateAccountTest(){
         String expected = "MY ACCOUNT";
         homeHelper.goToLogin();
@@ -27,7 +28,7 @@ public class CreateAccountTest extends AbstractTest {
         Assert.assertEquals(actual,expected,"Failed!");
     }
 
-    @Test(priority = 2)
+    @Test(priority = 2,description = "Create new account error")
     public void failedCreateAccountTest(){
         loginHelper.useRandomEmail();
         loginHelper.goToCreateAccount();
@@ -36,7 +37,7 @@ public class CreateAccountTest extends AbstractTest {
         Assert.assertTrue(result);
     }
 
-    @Test(priority = 3)
+    @Test(priority = 3, description = "Create new account with registered mail")
     public void createAccountWithRegisteredMailTest(){
         String expected = "An account using this email address has already been registered.";
         homeHelper.goToLogin();
@@ -47,7 +48,7 @@ public class CreateAccountTest extends AbstractTest {
         Assert.assertEquals(actual,expected,"Failed!");
     }
 
-    @Test(priority = 3)
+    @Test(priority = 3, description = "Create account with invalid password")
     public void createAccountWithInvalidPasswordTest(){
         String expected = "passwd is invalid.";
         homeHelper.goToLogin();

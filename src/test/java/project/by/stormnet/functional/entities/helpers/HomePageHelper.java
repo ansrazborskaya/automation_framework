@@ -13,10 +13,41 @@ public class HomePageHelper extends AbstractHelper {
     }
 
     public LoginPageHelper goToLogin(){
-        //navigateToHomePage();
+        navigateToHomePage();
         homePage.clickLoginButton();
         return new LoginPageHelper();
 
+    }
 
+    public HomePageHelper doSuccessNewsletterSubscription(){
+        homePage.fillNewsletterFieldRandom().clickSubmitNewsletter();
+        return this;
+    }
+
+    public HomePageHelper doErrorNewsletterSubscription(String email){
+        homePage.fillNewsletterField(email).clickSubmitNewsletter();
+        return this;
+    }
+
+    public HomePageHelper sendEmptyEmailNewsletter(){
+        homePage.clickSubmitNewsletter();
+        return this;
+    }
+
+    public String checkSuccessMessage(){
+       return homePage.checkSuccessMessage();
+    }
+
+    public String checkErrorMessage(){
+        return homePage.checkErrorMessage();
+    }
+
+    public boolean checkVisibilityErrorMessage(){
+        return homePage.visibilityErrorMessage();
+    }
+
+    public ContactPageHelper goContactUs(){
+        homePage.clickContactUsButton();
+        return new ContactPageHelper();
     }
 }
