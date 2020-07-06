@@ -60,7 +60,7 @@ public class AbstractPage extends FrameworkCore {
     }
 
 
-    public static void waitForElementClickable(final By by) {
+    public void waitForElementClickable(final By by) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, PauseLength.MAX.value());
             wait.until(ExpectedConditions.elementToBeClickable(by));

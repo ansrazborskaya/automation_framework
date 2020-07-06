@@ -118,6 +118,6 @@ public class CreateAccountPage extends AbstractPage {
 
     public HomePage clickHomeButton(){
         getElement(homeButton).click();
-        return HomePage.getHomePage();
+        return new HomePage().getHomePage();
     }
 }
