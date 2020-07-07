@@ -99,7 +99,6 @@ public class CardProductTest extends AbstractTest {
         productHelper.goToCart();
         String actual = cartHelper.checkGoShoppingCart();
         Assert.assertEquals(actual,expected,"There are no products in the basket.");
-
     }
 
     @Test(priority = 7,description = "Change total amount")

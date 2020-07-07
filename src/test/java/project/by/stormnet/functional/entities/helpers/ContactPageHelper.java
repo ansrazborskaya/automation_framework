@@ -54,8 +54,6 @@ public class ContactPageHelper extends AbstractHelper{
         return result;
     }
 
-
-
    public boolean checkErrorMessageMandatoryEmail(){
        boolean result = contactPage.checkErrorMessage();
        contactPage.clearOrderField();
