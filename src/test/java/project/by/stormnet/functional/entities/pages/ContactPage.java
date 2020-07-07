@@ -1,10 +1,11 @@
 package project.by.stormnet.functional.entities.pages;
 
-public class ContactPage extends AbstractPage{
+import io.qameta.allure.Step;
+import org.openqa.selenium.support.ui.Select;
+
+public class ContactPage extends AbstractPage {
 
     private static String title = "//h1[@class='page-heading bottom-indent']";
-    private String customerValueDropdawn = "//div[@class='selector']/select/option[@value='2']";
-    private String webmasterValueDropdawn = "//div[@class='selector']/select/option[@value='1']";
     private String emailField = "//input[@id='email']";
     private String orderField = "//input[@id='id_order']";
     private String messageField = "//textarea[@id='message']";
@@ -14,97 +15,107 @@ public class ContactPage extends AbstractPage{
     private String homeButton = "//a[@class='btn btn-default button button-small'][@href='http://automationpractice.com/']";
     private String customerText = "//p[@id='desc_contact2']";
     private String webmasterText = "//p[@id='desc_contact1']";
+    private String dropdawnField = "//select[@id=\"id_contact\"]";
 
 
-
+    @Step("Get contact page")
     public static ContactPage getContactPage() {
         ContactPage contactPage = new ContactPage();
         waitForElementVisible(getElementBy(title));
         return contactPage;
     }
 
-    public ContactPage clickSubjectHeadingDropdawn(){
-        waitForElementClickable(getElementBy(customerValueDropdawn));
-        getElement(customerValueDropdawn).click();
+    @Step("Choose customer service value")
+    public ContactPage clickSubjectHeadingDropdawn() {
+        Select dropdawn = new Select(getElement(dropdawnField));
+        dropdawn.selectByVisibleText("Customer service");
         return getContactPage();
     }
-    public ContactPage chooseWebmasterValue(){
-        waitForElementClickable(getElementBy(webmasterValueDropdawn));
-        getElement(webmasterValueDropdawn).click();
-       return getContactPage();
+
+    @Step("Choose webmaster value")
+    public ContactPage chooseWebmasterValue() {
+        Select dropdawn = new Select(getElement(dropdawnField));
+        dropdawn.selectByVisibleText("Webmaster");
+        return getContactPage();
     }
 
-
-    public ContactPage fillEmailField(String email){
+    @Step("Fill email field")
+    public ContactPage fillEmailField(String email) {
         waitForElementClickable(getElementBy(emailField));
         getElement(emailField).sendKeys(email);
         return getContactPage();
     }
 
-    public ContactPage clearEmailField(){
+    @Step("Clear email field")
+    public ContactPage clearEmailField() {
         getElement(emailField).clear();
         return getContactPage();
     }
 
-    public ContactPage fillOrderField(String order){
+    @Step("Fill order field")
+    public ContactPage fillOrderField(String order) {
         waitForElementClickable(getElementBy(orderField));
         getElement(orderField).sendKeys(order);
         return getContactPage();
     }
 
-    public ContactPage clearOrderField(){
+    @Step("Clear order field")
+    public ContactPage clearOrderField() {
         getElement(orderField).clear();
         return getContactPage();
     }
 
-    public ContactPage fillMessageField(String message){
+    @Step("Fill message field")
+    public ContactPage fillMessageField(String message) {
         waitForElementClickable(getElementBy(messageField));
         getElement(messageField).sendKeys(message);
         return getContactPage();
     }
 
-    public ContactPage clearMessageField(){
+    @Step("Clear message field")
+    public ContactPage clearMessageField() {
         getElement(messageField).clear();
         return getContactPage();
     }
 
-    public ContactPage clickSendButton(){
+    @Step("Click send button")
+    public ContactPage clickSendButton() {
         waitForElementClickable(getElementBy(sendButton));
         getElement(sendButton).click();
         return getContactPage();
     }
 
-    public void clickSendButtonError(){
+    @Step("Click send button with error")
+    public void clickSendButtonError() {
         waitForElementClickable(getElementBy(sendButton));
         getElement(sendButton).click();
-
     }
 
-    public boolean checkErrorMessage(){
+    @Step("Check error message")
+    public boolean checkErrorMessage() {
         return isElementVisible(getElementBy(errorMessage));
     }
 
-    public boolean checkSuccessMessage(){
+    @Step("Check success message")
+    public boolean checkSuccessMessage() {
         return isElementVisible(getElementBy(successMessage));
     }
 
-    public HomePage clickHomeButton(){
+    @Step("Click home button")
+    public HomePage clickHomeButton() {
         getElement(homeButton).click();
-        return  HomePage.getHomePage();
+        return HomePage.getHomePage();
     }
 
-    public String checkCustomerText(){
+    @Step("Check customer text")
+    public String checkCustomerText() {
         waitForElementVisible(getElementBy(customerText));
         return getElement(customerText).getAttribute("innerText").trim();
-
     }
 
-    public String checkWebmasterText(){
+    @Step("Check webmaster text")
+    public String checkWebmasterText() {
         waitForElementVisible(getElementBy(webmasterText));
         return getElement(webmasterText).getAttribute("innerText").trim();
-
     }
-
-
-
 }

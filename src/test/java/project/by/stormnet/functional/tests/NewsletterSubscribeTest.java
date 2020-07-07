@@ -16,7 +16,7 @@ public class NewsletterSubscribeTest extends AbstractTest {
         String expected = "Newsletter : You have successfully subscribed to this newsletter.";
         homeHelper.doSuccessNewsletterSubscription();
         String actual = homeHelper.checkSuccessMessage();
-        Assert.assertEquals(actual,expected);
+        Assert.assertEquals(actual,expected,"Failed subscribe!");
     }
 
     @Test(priority = 3, description = "Email already used")

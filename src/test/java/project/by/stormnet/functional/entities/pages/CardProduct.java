@@ -1,5 +1,7 @@
 package project.by.stormnet.functional.entities.pages;
 
+import io.qameta.allure.Step;
+
 public class CardProduct extends AbstractPage {
 
     private static String imageDress = "//img[@id='bigpic']";
@@ -17,7 +19,6 @@ public class CardProduct extends AbstractPage {
     private String checkoutButton = "//a[@title='Proceed to checkout']";
     private String title = "//div[@class='layer_cart_product col-xs-12 col-md-6']/h2";
     private String closeButton = "//a[@title='Close']";
-
     private String reviewButton = "//a[@id='new_comment_tab_btn']";
     private String reviewTitle = "//input[@id='comment_title']";
     private String commentText = "//textarea[@id='content']";
@@ -26,130 +27,145 @@ public class CardProduct extends AbstractPage {
     private String okButton = "//span[text()='OK']";
 
 
-
-    public static CardProduct getCardProduct(){
+    @Step("Get product card page")
+    public static CardProduct getCardProduct() {
         CardProduct cardProduct = new CardProduct();
         waitForElementVisible(getElementBy(imageDress));
         return cardProduct;
     }
 
-    public CardProduct clearQuantityField(){
+    @Step("Clear quantity field")
+    public CardProduct clearQuantityField() {
         getElement(quantityField).clear();
         return getCardProduct();
     }
 
-    public CardProduct fillQuantityField(String quantity){
+    @Step("Fill quantity field")
+    public CardProduct fillQuantityField(String quantity) {
         clearQuantityField();
         getElement(quantityField).sendKeys(quantity);
         return getCardProduct();
     }
 
-    public String checkQuantityField(){
+    @Step("Check quantity field")
+    public String checkQuantityField() {
         return getElement(checkQuantity).getAttribute("innerText").trim();
-
     }
 
-
-    public CardProduct clickQuantityPlus(){
+    @Step("CLick plus button")
+    public CardProduct clickQuantityPlus() {
         waitForElementClickable(getElementBy(quantityPlus));
         getElement(quantityPlus).click();
         return getCardProduct();
     }
 
-    public CardProduct clickQuantityMinus(){
+    @Step("Click minus button")
+    public CardProduct clickQuantityMinus() {
         waitForElementClickable(getElementBy(quantityMinus));
         getElement(quantityMinus).click();
         return getCardProduct();
     }
 
-    public CardProduct clickDropdown(){
+    @Step("Click dropdown")
+    public CardProduct clickDropdown() {
         getElement(dropdownSize).click();
         return getCardProduct();
     }
 
-    public CardProduct chooseSize(){
+    @Step("Choose size")
+    public CardProduct chooseSize() {
         getElement(sizeDress).click();
         return getCardProduct();
     }
 
-    public CardProduct chooseColor(){
+    @Step("Choose color")
+    public CardProduct chooseColor() {
         getElement(pinkColor).click();
         return getCardProduct();
     }
 
-    public CardProduct clickSubmitButton(){
+    @Step("Click submit button")
+    public CardProduct clickSubmitButton() {
         waitForElementClickable(getElementBy(buttonSubmit));
         getElement(buttonSubmit).click();
         return getCardProduct();
     }
 
-    public String checkAddingProduct(){
+    @Step("Check adding product")
+    public String checkAddingProduct() {
 
         return getElement(title).getAttribute("innerText").trim();
     }
 
-    public CardProduct addWishlist(){
+    @Step("Add to wishlist")
+    public CardProduct addWishlist() {
         waitForElementClickable(getElementBy(wishlistButton));
         getElement(wishlistButton).click();
         return getCardProduct();
     }
 
-    public String checkWishlistAdd(){
+    @Step("Check successful adding to wishlist")
+    public String checkWishlistAdd() {
         waitForElementVisible(getElementBy(wishlistAdd));
         return getElement(wishlistAdd).getAttribute("innerText").trim();
     }
 
-    public CardProduct clickCloseButton(){
+    @Step("Click close button")
+    public CardProduct clickCloseButton() {
         waitForElementClickable(getElementBy(closeButton));
         getElement(closeButton).click();
         return getCardProduct();
     }
 
-    public CardProduct clickCloseWindowButton(){
+    @Step("Click close window button")
+    public CardProduct clickCloseWindowButton() {
         waitForElementClickable(getElementBy(closeCartWindowButton));
         getElement(closeCartWindowButton).click();
         return getCardProduct();
     }
 
-    public CardProduct clickReviewButton(){
+    @Step("Click review button")
+    public CardProduct clickReviewButton() {
         waitForElementClickable(getElementBy(reviewButton));
         getElement(reviewButton).click();
         return getCardProduct();
     }
 
-    public CardProduct fillReviewTitleField(String title){
+    @Step("Fill title field")
+    public CardProduct fillReviewTitleField(String title) {
         getElement(reviewTitle).sendKeys(title);
         return getCardProduct();
     }
 
-    public CardProduct fillReviewTextField(String text){
+    @Step("Fill text field")
+    public CardProduct fillReviewTextField(String text) {
         getElement(commentText).sendKeys(text);
         return getCardProduct();
     }
 
-    public CardProduct clickSendButton(){
+    @Step("Click send button")
+    public CardProduct clickSendButton() {
         getElement(sendButton).click();
         return getCardProduct();
     }
 
-    public String checkComment(){
+    @Step("Check comment")
+    public String checkComment() {
         waitForElementVisible(getElementBy(successComment));
         return getElement(successComment).getAttribute("innerText").trim();
-
     }
 
-    public CardProduct clickOkButton(){
+    @Step("Click ok button")
+    public CardProduct clickOkButton() {
         waitForElementClickable(getElementBy(okButton));
         getElement(okButton).click();
         return getCardProduct();
     }
 
-
-    public ShoppingCartPage clickProceedCheckoutButton(){
+    @Step("Click proceed checkout button")
+    public ShoppingCartPage clickProceedCheckoutButton() {
         waitForElementClickable(getElementBy(checkoutButton));
         getElement(checkoutButton).click();
         return ShoppingCartPage.getShoppingCart();
     }
-
-
 }
