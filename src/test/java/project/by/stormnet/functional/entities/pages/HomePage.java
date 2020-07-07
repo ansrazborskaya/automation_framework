@@ -1,5 +1,7 @@
 package project.by.stormnet.functional.entities.pages;
 
+import io.qameta.allure.Step;
+
 public class HomePage extends AbstractPage {
     private static String logo = "//img[@class='logo img-responsive']";
     private String loginButton = "//a[@class='login']";
@@ -10,59 +12,65 @@ public class HomePage extends AbstractPage {
     private String errorMessage = "//p[@class='alert alert-danger']";
 
 
-
+    @Step("Get home page")
     public static HomePage getHomePage() {
         HomePage homePage = new HomePage();
         waitForElementVisible(getElementBy(logo));
         return homePage;
     }
 
+    @Step("Navigate to home page")
     public HomePage navigateToHomePage() {
         openUrl(baseUrl);
         return getHomePage();
     }
 
-    public HomePage fillNewsletterFieldRandom(){
+    @Step("Fill in the random values field Newsletter")
+    public HomePage fillNewsletterFieldRandom() {
         String emailRandom = generateEmailAddress();
         getElement(newsletterField).sendKeys(emailRandom);
         return getHomePage();
     }
 
-    public HomePage fillNewsletterField(String email){
+    @Step("Fill newsletter field")
+    public HomePage fillNewsletterField(String email) {
         getElement(newsletterField).sendKeys(email);
         return getHomePage();
     }
 
-    public HomePage clickSubmitNewsletter(){
+    @Step("Click submit newsletter button")
+    public HomePage clickSubmitNewsletter() {
         getElement(submitNewsletter).click();
         return getHomePage();
     }
 
+    @Step("Click login button")
     public LoginPage clickLoginButton() {
         getElement(loginButton).click();
         return LoginPage.getLoginPage();
     }
 
-    public ContactPage clickContactUsButton(){
+    @Step("Click contactUs button")
+    public ContactPage clickContactUsButton() {
         getElement(contactUsButton).click();
         return ContactPage.getContactPage();
     }
 
-    public String checkSuccessMessage(){
+    @Step("Сheck success message")
+    public String checkSuccessMessage() {
         waitForElementVisible(getElementBy(successMessage));
         return getElement(successMessage).getAttribute("innerText").trim();
     }
 
-    public String checkErrorMessage(){
+    @Step("Check error message")
+    public String checkErrorMessage() {
         waitForElementVisible(getElementBy(errorMessage));
         return getElement(errorMessage).getAttribute("innerText").trim();
     }
 
-    public boolean visibilityErrorMessage(){
+    @Step("Check visibility error message")
+    public boolean visibilityErrorMessage() {
         waitForElementVisible(getElementBy(errorMessage));
         return isElementVisible(getElementBy(errorMessage));
     }
-
-
-
 }

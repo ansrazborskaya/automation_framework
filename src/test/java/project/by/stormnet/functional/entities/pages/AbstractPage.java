@@ -4,6 +4,7 @@ package project.by.stormnet.functional.entities.pages;
 import by.stormnet.core.FrameworkCore;
 import by.stormnet.core.utils.GenerateData;
 import by.stormnet.core.utils.PauseLength;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -24,6 +25,7 @@ public class AbstractPage extends FrameworkCore {
         return driver;
     }
 
+
     public void openUrl(String URL) {
         driver.manage().window().maximize();
         driver.get(URL);
@@ -32,7 +34,6 @@ public class AbstractPage extends FrameworkCore {
     public void openBrowser(){
         driver = getInstance();
     }
-
 
     public static void waitForElementVisible(final By by) {
         try {

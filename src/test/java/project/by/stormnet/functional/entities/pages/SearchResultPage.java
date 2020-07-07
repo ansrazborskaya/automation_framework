@@ -1,6 +1,8 @@
 package project.by.stormnet.functional.entities.pages;
 
-public class SearchResultPage extends AbstractPage{
+import io.qameta.allure.Step;
+
+public class SearchResultPage extends AbstractPage {
     private static String title = "//span[(@class='heading-counter') and contains(text(),'results')] ";
     private String searchResult = "//div[@class='product-container']";
     private String addToCardButton = "//a[contains(@title,'Add to cart') and contains(@data-id-product,'5')]";
@@ -12,41 +14,43 @@ public class SearchResultPage extends AbstractPage{
     private String cardProductButton = "//div[@class='button-container']/a[@href='http://automationpractice.com/index.php?id_product=4&controller=product&search_query=dress&results=7']";
     private String forMouseProductButton = "//img[@src='http://automationpractice.com/img/p/1/0/10-home_default.jpg']";
 
-    public static SearchResultPage getSearchResultPage(){
+    @Step("Get search result page")
+    public static SearchResultPage getSearchResultPage() {
         SearchResultPage searchResultPage = new SearchResultPage();
         waitForElementVisible(getElementBy(title));
         return searchResultPage;
     }
 
-    public int getResultsSizePerPage(){
+    @Step("Get results size per page")
+    public int getResultsSizePerPage() {
         return getElements(searchResult).size();
     }
 
-    public SearchResultPage clickAddToCardButton(){
+    @Step("Click add to card button")
+    public SearchResultPage clickAddToCardButton() {
         placeCursor(forMousePlace);
         waitForElementClickable(getElementBy(addToCardButton));
         getElement(addToCardButton).click();
         return getSearchResultPage();
     }
 
-    public SearchResultPage clickContinueShoppingButton(){
+    @Step("Click continue shopping button")
+    public SearchResultPage clickContinueShoppingButton() {
         waitForElementClickable(getElementBy(image));
         getElement(continueShoppingButton).click();
         return getSearchResultPage();
     }
 
-    public String checkCard(){
+    @Step("Check card")
+    public String checkCard() {
         return getElement(checkCard).getText();
     }
 
-    public CardProduct clickCardProductButton(){
+    @Step("Click card product button")
+    public CardProduct clickCardProductButton() {
         placeCursor(forMouseProductButton);
         waitForElementClickable(getElementBy(cardProductButton));
         getElement(cardProductButton).click();
         return CardProduct.getCardProduct();
     }
-
-
-
-
 }

@@ -34,7 +34,7 @@ public class CreateAccountTest extends AbstractTest {
         loginHelper.goToCreateAccount();
         createHelper.failedCreateAccount();
         boolean result = createHelper.checkErrorMessage();
-        Assert.assertTrue(result);
+        Assert.assertTrue(result,"New account was created!");
     }
 
     @Test(priority = 3, description = "Create new account with registered mail")

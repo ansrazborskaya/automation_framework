@@ -42,7 +42,6 @@ public class CardProductTest extends AbstractTest {
         String quantity = searchHelper.checkCard();
         Assert.assertTrue(!quantity.equals("empty"), "No products in the cart");
 
-
     }
 
     @Test(priority = 3, description = "Adding goods to the basket from the product card page")
@@ -51,9 +50,8 @@ public class CardProductTest extends AbstractTest {
         searchHelper.goProductCard();
         productHelper.fillFilter(quantity);
         productHelper.addToCard();
-
         String actual = productHelper.checkAddingProduct();
-        Assert.assertEquals(actual,expected );
+        Assert.assertEquals(actual,expected,"Product didn't add to your shopping cart" );
     }
 
     @Test(priority = 3,description = "Increase the quantity of goods")
@@ -62,7 +60,7 @@ public class CardProductTest extends AbstractTest {
         productHelper.changeQuantityPlus();
         productHelper.addToCard();
         String result = productHelper.checkQuantityField();
-        Assert.assertTrue(!result.equals("0"));
+        Assert.assertTrue(!result.equals("0"),"Result equals 0");
     }
 
     @Test(priority = 3, description = "Reduce the quantity of goods")
@@ -71,7 +69,7 @@ public class CardProductTest extends AbstractTest {
         productHelper.changeQuantityMinus();
         productHelper.addToCard();
         String result = productHelper.checkQuantityField();
-        Assert.assertTrue(!result.equals("0"));
+        Assert.assertTrue(!result.equals("0"), "Result equals 0");
     }
 
     @Test(priority = 4, description = "Add to wishlist")
@@ -79,7 +77,7 @@ public class CardProductTest extends AbstractTest {
         String expected = "Added to your wishlist.";
         productHelper.addToWishlist();
         String actual = productHelper.checkAddToWishlist();
-        Assert.assertEquals(actual,expected);
+        Assert.assertEquals(actual,expected,"Didn't add to wishlist");
 
     }
 
@@ -118,6 +116,6 @@ public class CardProductTest extends AbstractTest {
         String expected = "Your shopping cart is empty.";
         cartHelper.clickDeleteButton();
         String actual = cartHelper.checkProductDeletion();
-        Assert.assertEquals(actual,expected);
+        Assert.assertEquals(actual,expected,"Your shopping cart isn't empty.");
     }
 }

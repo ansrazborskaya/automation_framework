@@ -1,6 +1,8 @@
 package project.by.stormnet.functional.entities.pages;
 
 
+import io.qameta.allure.Step;
+
 public class LoginPage extends AbstractPage {
     private static String title = "//h3[text()='Already registered?']";
     private String loginField = "//input[@id='email']";
@@ -13,75 +15,86 @@ public class LoginPage extends AbstractPage {
     private String createAccountMessageError = "//div[@id='create_account_error']/ol/li";
     private String navigationBar = "//span[@class='navigation_page']";
 
-    public static LoginPage getLoginPage(){
+    @Step("Get login page")
+    public static LoginPage getLoginPage() {
         LoginPage loginPage = new LoginPage();
         waitForElementVisible(getElementBy(title));
         return loginPage;
     }
 
-    public LoginPage fillLoginField(String email){
+    @Step("Fill login field")
+    public LoginPage fillLoginField(String email) {
         getElement(loginField).sendKeys(email);
         return getLoginPage();
     }
 
-    public LoginPage clearLoginField(){
+    @Step("Clear login field")
+    public LoginPage clearLoginField() {
         getElement(loginField).clear();
         return getLoginPage();
     }
 
-    public LoginPage fillPasswordField(String password){
+    @Step("Fill password field")
+    public LoginPage fillPasswordField(String password) {
         getElement(passwordField).sendKeys(password);
         return getLoginPage();
     }
 
-    public MyAccountPage clickButtonSubmit(){
+    @Step("Click submit button")
+    public MyAccountPage clickButtonSubmit() {
         getElement(buttonSubmit).click();
         return MyAccountPage.getMyAccountPage();
     }
 
-    public void clickButtonSubmitError(){
+    @Step("Click submit button with error")
+    public void clickButtonSubmitError() {
         getElement(buttonSubmit).click();
 
     }
 
-    public String checkInvalidLoginMessage(){
-
+    @Step("Check invalid login message")
+    public String checkInvalidLoginMessage() {
         return getElement(messageError).getAttribute("innerText").trim();
     }
 
-    public LoginPage fillEmailField(String emailError){
+    @Step("Fill email field")
+    public LoginPage fillEmailField(String emailError) {
         getElement(email).sendKeys(emailError);
         return getLoginPage();
     }
 
-    public LoginPage generateRandomEmail(){
+    @Step("Fill in the random values field email")
+    public LoginPage generateRandomEmail() {
         String emailRandom = generateEmailAddress();
-       getElement(email).sendKeys(emailRandom);
-       return getLoginPage();
-
+        getElement(email).sendKeys(emailRandom);
+        return getLoginPage();
     }
 
-
-    public void clickCreateAccountButtonError(){
+    @Step("Click create account button with error")
+    public void clickCreateAccountButtonError() {
         getElement(createAccountButton).click();
     }
 
-    public boolean checkInvalidEmailMessage(){
+    @Step("Check invalid email message")
+    public boolean checkInvalidEmailMessage() {
         waitForElementVisible(getElementBy(createAccountMessageError));
         return getElement(createAccountMessageError).isDisplayed();
     }
-    public ForgotPasswordPage clickForgotPassword(){
+
+    @Step("Click forgot password button")
+    public ForgotPasswordPage clickForgotPassword() {
         getElement(forgotPasswordButton).click();
         return ForgotPasswordPage.getForgotPasswordPage();
     }
 
-    public CreateAccountPage clickCreateAccountButton(){
+    @Step("Click create account button")
+    public CreateAccountPage clickCreateAccountButton() {
         getElement(createAccountButton).click();
         return CreateAccountPage.getCreateAccountPage();
     }
 
-    public String checkBackToLogin(){
+    @Step("Check back to login page")
+    public String checkBackToLogin() {
         return getElement(navigationBar).getAttribute("innerText").trim();
     }
-
 }

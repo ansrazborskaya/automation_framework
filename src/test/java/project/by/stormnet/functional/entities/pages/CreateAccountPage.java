@@ -1,6 +1,8 @@
 package project.by.stormnet.functional.entities.pages;
 
 
+import io.qameta.allure.Step;
+
 public class CreateAccountPage extends AbstractPage {
 
     private static String title = "//h1[@class='page-heading']";
@@ -20,103 +22,123 @@ public class CreateAccountPage extends AbstractPage {
     private String errorMessageText = "//div[@class='alert alert-danger']/ol/li";
     private String homeButton = "//a[@class='home']";
 
-    public static CreateAccountPage getCreateAccountPage(){
+    @Step("Get create account page")
+    public static CreateAccountPage getCreateAccountPage() {
         CreateAccountPage createAccountPage = new CreateAccountPage();
         waitForElementVisible(getElementBy(title));
         return createAccountPage;
     }
 
-    public CreateAccountPage clickGenderButton(){
+    @Step("Click gender button")
+    public CreateAccountPage clickGenderButton() {
         waitForElementClickable(getElementBy(genderButton));
         getElement(genderButton).click();
         return getCreateAccountPage();
     }
 
-    public CreateAccountPage fillRandomFirstNameField(){
+    @Step("Fill random FirstName Field")
+    public CreateAccountPage fillRandomFirstNameField() {
         String firstName = generateRandomValue();
         getElement(firstNameField).sendKeys(firstName);
         return getCreateAccountPage();
     }
-    public CreateAccountPage fillRandomLastNameField(){
+
+    @Step("Fill random LastName Field")
+    public CreateAccountPage fillRandomLastNameField() {
         String lastName = generateRandomValue();
         getElement(lastNameField).sendKeys(lastName);
         return getCreateAccountPage();
     }
 
-    public CreateAccountPage fillRandomPasswordField(){
+    @Step("Fill random password Field")
+    public CreateAccountPage fillRandomPasswordField() {
         String password = generateRandomValue();
         getElement(passwordField).sendKeys(password);
         return getCreateAccountPage();
     }
 
-    public CreateAccountPage fillPasswordField( String password){
+    @Step("Fill password Field")
+    public CreateAccountPage fillPasswordField(String password) {
         getElement(passwordField).sendKeys(password);
         return getCreateAccountPage();
     }
 
-    public CreateAccountPage fillEmailField(String email){
+    @Step("Fill email Field")
+    public CreateAccountPage fillEmailField(String email) {
         getElement(emailField).sendKeys(email);
         return getCreateAccountPage();
     }
-    public CreateAccountPage clearEmailField(){
+
+    @Step("Clear password Field")
+    public CreateAccountPage clearEmailField() {
         getElement(emailField).clear();
         return getCreateAccountPage();
     }
 
-
-    public CreateAccountPage fillRandomAddressField(){
+    @Step("Fill random address Field")
+    public CreateAccountPage fillRandomAddressField() {
         String address = generateRandomValue();
         getElement(addressField).sendKeys(address);
         return getCreateAccountPage();
     }
 
-    public CreateAccountPage fillRandomCityField(){
+    @Step("Fill random city Field")
+    public CreateAccountPage fillRandomCityField() {
         String city = generateRandomValue();
         getElement(cityField).sendKeys(city);
         return getCreateAccountPage();
     }
 
-    public CreateAccountPage clickStateButton(){
+    @Step("Click state button")
+    public CreateAccountPage clickStateButton() {
         getElement(stateField).click();
         return getCreateAccountPage();
     }
 
-    public CreateAccountPage fillRandomPostcodeField(){
+    @Step("Fill random postcode Field")
+    public CreateAccountPage fillRandomPostcodeField() {
         String postcode = generateRandomPostcode();
         getElement(postcodeField).sendKeys(postcode);
         return getCreateAccountPage();
     }
 
-    public CreateAccountPage fillRandomMobilePhoneField(){
+    @Step("Fill random mobile phone Field")
+    public CreateAccountPage fillRandomMobilePhoneField() {
         String phone = generateRandomPhone();
         getElement(mobilePhoneField).sendKeys(phone);
         return getCreateAccountPage();
     }
 
-    public CreateAccountPage fillRandomMyAddressField(){
+    @Step("Fill random MyAddress Field")
+    public CreateAccountPage fillRandomMyAddressField() {
         String myAddress = generateRandomValue();
         getElement(myAddressField).sendKeys(myAddress);
         return getCreateAccountPage();
     }
 
-    public MyAccountPage clickRegisterButton(){
+    @Step("CLick register button")
+    public MyAccountPage clickRegisterButton() {
         getElement(registerButton).click();
         return MyAccountPage.getMyAccountPage();
     }
 
-    public boolean checkErrorMessage(){
-       return isElementVisible(getElementBy(errorMessage));
+    @Step("Check error message visibility")
+    public boolean checkErrorMessage() {
+        return isElementVisible(getElementBy(errorMessage));
     }
 
-    public String checkErrorMessageText(){
+    @Step("Check error message text")
+    public String checkErrorMessageText() {
         return getElement(errorMessageText).getAttribute("innerText").trim();
     }
 
-    public void  clickRegisterButtonError() {
+    @Step("Click register button with error")
+    public void clickRegisterButtonError() {
         getElement(registerButton).click();
     }
 
-    public HomePage clickHomeButton(){
+    @Step("Click home button")
+    public HomePage clickHomeButton() {
         getElement(homeButton).click();
         return new HomePage().getHomePage();
     }
