@@ -37,7 +37,7 @@ public class AbstractPage extends FrameworkCore {
 
     public static void waitForElementVisible(final By by) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, PauseLength.MAX.value());
+            WebDriverWait wait = new WebDriverWait(driver, PauseLength.MIN.value());
             wait.until(ExpectedConditions.presenceOfElementLocated(by));
         } catch (Throwable e) {
             System.out.println(e.getLocalizedMessage());
@@ -63,7 +63,7 @@ public class AbstractPage extends FrameworkCore {
 
     public void waitForElementClickable(final By by) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, PauseLength.MAX.value());
+            WebDriverWait wait = new WebDriverWait(driver, PauseLength.MIN.value());
             wait.until(ExpectedConditions.elementToBeClickable(by));
 
         } catch (Throwable e) {
