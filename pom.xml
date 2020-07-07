@@ -67,7 +67,7 @@
                     <systemProperties>
                         <property>
                             <name>allure.results.directory</name>
-                            <value>C:\Users\hp\.jenkins\workspace\maven-jlr\allure-results</value>
+                            <value>C:\Users\hp\.jenkins\workspace\GithubRazborskayaProject\allure-report</value>
                         </property>
                     </systemProperties>
                     <!-- Suite testng xml file to consider for test execution -->

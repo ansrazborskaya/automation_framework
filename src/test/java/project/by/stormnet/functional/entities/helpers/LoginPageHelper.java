@@ -23,7 +23,6 @@ public class LoginPageHelper extends AbstractHelper {
         String result = loginPage.checkInvalidLoginMessage();
         clearLoginField();
         return result;
-
     }
 
     private LoginPageHelper clearLoginField() {
