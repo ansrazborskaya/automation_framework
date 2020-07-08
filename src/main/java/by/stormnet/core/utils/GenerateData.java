@@ -30,5 +30,4 @@ public class GenerateData {
         return phone = fakeValuesService.bothify("#########");
     }
 
-
 }
