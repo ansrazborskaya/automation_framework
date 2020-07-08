@@ -5,7 +5,7 @@ import project.by.stormnet.functional.entities.pages.MyAccountPage;
 public class MyAccountPageHelper {
     private MyAccountPage myAccountPage = new MyAccountPage();
 
-    public SearchResultPageHelper doSearch(String search){
+    public SearchResultPageHelper doSearch(String search) {
         myAccountPage.fillSearchField(search);
         myAccountPage.clickSearchButton();
         return new SearchResultPageHelper();
@@ -18,7 +18,7 @@ public class MyAccountPageHelper {
         return result;
     }
 
-    public LoginPageHelper doLogout(){
+    public LoginPageHelper doLogout() {
         myAccountPage.clickLogoutButton();
         return new LoginPageHelper();
     }

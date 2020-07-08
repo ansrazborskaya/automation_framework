@@ -15,6 +15,7 @@ public class CreateAccountPageHelper {
         createAccountPage.clickStateButton();
         createAccountPage.fillRandomPostcodeField();
         createAccountPage.fillRandomMobilePhoneField();
+        createAccountPage.clearMyAddressField();
         createAccountPage.fillRandomMyAddressField();
         createAccountPage.clickRegisterButton();
         return new MyAccountPageHelper();
@@ -27,6 +28,7 @@ public class CreateAccountPageHelper {
         createAccountPage.fillRandomLastNameField();
         createAccountPage.fillRandomPasswordField();
         createAccountPage.fillRandomMobilePhoneField();
+        createAccountPage.clearMyAddressField();
         createAccountPage.fillRandomMyAddressField();
         createAccountPage.clickRegisterButtonError();
         return this;
@@ -45,6 +47,7 @@ public class CreateAccountPageHelper {
         createAccountPage.clickStateButton();
         createAccountPage.fillRandomPostcodeField();
         createAccountPage.fillRandomMobilePhoneField();
+        createAccountPage.clearMyAddressField();
         createAccountPage.fillRandomMyAddressField();
         createAccountPage.clickRegisterButtonError();
         return this;
@@ -61,6 +64,7 @@ public class CreateAccountPageHelper {
         createAccountPage.clickStateButton();
         createAccountPage.fillRandomPostcodeField();
         createAccountPage.fillRandomMobilePhoneField();
+        createAccountPage.clearMyAddressField();
         createAccountPage.fillRandomMyAddressField();
         createAccountPage.clickRegisterButtonError();
         return this;

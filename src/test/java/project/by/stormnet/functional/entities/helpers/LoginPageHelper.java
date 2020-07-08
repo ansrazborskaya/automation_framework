@@ -22,7 +22,13 @@ public class LoginPageHelper extends AbstractHelper {
     public String checkInvalidLoginMessage() {
         String result = loginPage.checkInvalidLoginMessage();
         clearLoginField();
+        clearPasswordField();
         return result;
+    }
+
+    private LoginPageHelper clearPasswordField() {
+        loginPage.clearPasswordField();
+        return this;
     }
 
     private LoginPageHelper clearLoginField() {

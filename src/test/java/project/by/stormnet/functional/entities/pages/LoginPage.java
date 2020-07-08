@@ -40,6 +40,12 @@ public class LoginPage extends AbstractPage {
         return getLoginPage();
     }
 
+    @Step("Clear password field")
+    public LoginPage clearPasswordField() {
+        getElement(passwordField).clear();
+        return getLoginPage();
+    }
+
     @Step("Click submit button")
     public MyAccountPage clickButtonSubmit() {
         getElement(buttonSubmit).click();

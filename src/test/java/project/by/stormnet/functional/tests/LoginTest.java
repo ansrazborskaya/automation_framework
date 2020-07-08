@@ -23,68 +23,67 @@ public class LoginTest extends AbstractTest {
 
 
     @BeforeClass
-    public void prepareToTest(){
+    public void prepareToTest() {
         homeHelper.goToLogin();
     }
 
     @Test(priority = 1, description = "Successful login")
-    public void successfulLoginTest(){
+    public void successfulLoginTest() {
         String expected = "MY ACCOUNT";
-        loginHelper.successfulLogin(email,password);
+        loginHelper.successfulLogin(email, password);
         String actual = myAccountHelper.checkSuccessfulLogin();
-        Assert.assertEquals(actual,expected,"Invalid login or password");
+        Assert.assertEquals(actual, expected, "Invalid login or password");
 
     }
 
     @Test(priority = 2, dataProvider = "invalidLogin", description = "Login with error")
-    public void invalidLoginTest(String email){
+    public void invalidLoginTest(String email) {
         String expected = "There is 1 error";
-        loginHelper.failedLogin(email,password);
+        loginHelper.failedLogin(email, password);
         String actual = loginHelper.checkInvalidLoginMessage();
-        Assert.assertEquals(actual,expected);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test(priority = 3, description = "Use already registered email")
-    public void emailAlreadyRegisteredTest(){
+    public void emailAlreadyRegisteredTest() {
         loginHelper.failedCreateAccount(emailError);
         boolean result = loginHelper.checkEmailErrorMessage();
-        Assert.assertTrue(result,"Message not displaying");
+        Assert.assertTrue(result, "Message not displaying");
     }
 
     @Test(priority = 4, description = "Password recovery test")
-    public void successfulPasswordRecoveryTest(){
+    public void successfulPasswordRecoveryTest() {
         loginHelper.clickForgotPassword();
         passwordHelper.successfulPasswordRecovery(email);
         boolean result = passwordHelper.checkSuccessfulPasswordRecovery();
-        Assert.assertTrue(result,"Message not displaying");
+        Assert.assertTrue(result, "Message not displaying");
 
     }
 
     @Test(priority = 5, description = "Back to login page")
-    public void backToLoginTest(){
+    public void backToLoginTest() {
         String expected = "Authentication";
         loginHelper.clickForgotPassword();
         passwordHelper.clickBackToLoginButton();
         String actual = loginHelper.checkBackToLogin();
-        Assert.assertEquals(actual,expected,"Failed back to login!");
+        Assert.assertEquals(actual, expected, "Failed back to login!");
     }
 
-    @Test(priority = 6,dataProvider = "invalidEmail", description = "Failed password recovery")
-    public void FailedPasswordRecoveryTest(String invalidEmail){
+    @Test(priority = 6, dataProvider = "invalidEmail", description = "Failed password recovery")
+    public void FailedPasswordRecoveryTest(String invalidEmail) {
         loginHelper.clickForgotPassword();
         passwordHelper.failedPasswordRecovery(invalidEmail);
         boolean result = passwordHelper.checkFailedPasswordRecovery();
-        Assert.assertTrue(result,"Message not displaying");
+        Assert.assertTrue(result, "Message not displaying");
     }
 
     @DataProvider(name = "invalidLogin")
-    public Object[][] provideDate(){
-        return new Object[][]{{"5ffffff"}, {"bla@bk.ru"},  {"newmail@mail.ru"}, {"56555555"}, {"title@"}};
+    public Object[][] provideDate() {
+        return new Object[][]{{"5ffffff"}, {"bla@bk.ru"}, {"newmail@mail.ru"}, {"56555555"}, {"title@"}};
     }
 
     @DataProvider(name = "invalidEmail")
-    public Object[][] invalidEmailDate(){
-        return new Object[][]{{"5ffffff"}, {"@bk.ru"},  {"il.ru"}, {"56555555"}, {"title@"}};
+    public Object[][] invalidEmailDate() {
+        return new Object[][]{{"5ffffff"}, {"@bk.ru"}, {"il.ru"}, {"56555555"}, {"title@"}};
     }
-
 }

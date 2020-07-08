@@ -6,12 +6,12 @@ public class AbstractHelper {
 
     AbstractPage abstractPage;
 
-    public void openBrowser(){
+    public void openBrowser() {
         abstractPage = new AbstractPage();
         abstractPage.openBrowser();
     }
 
-    public void open(){
+    public void open() {
         abstractPage.getDriver();
         abstractPage.openUrl(abstractPage.baseUrl);
     }
