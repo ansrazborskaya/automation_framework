@@ -9,7 +9,6 @@ public class IOUtils {
         Properties properties = new Properties();
         FileInputStream filePath = null;
 
-
         try {
             String filePathString = "src/main/resources/" + filename + ".properties";
             filePath = new FileInputStream(filePathString);
@@ -20,6 +19,5 @@ public class IOUtils {
         }
 
         return properties.getProperty(key);
-
     }
 }
