@@ -7,7 +7,6 @@ public class SearchResultPage extends AbstractPage {
     private String searchResult = "//div[@class='product-container']";
     private String addToCardButton = "//a[contains(@title,'Add to cart') and contains(@data-id-product,'5')]";
     private String forMousePlace = "//img[@class='replace-2x img-responsive'][@src='http://automationpractice.com/img/p/1/2/12-home_default.jpg']";
-
     private String image = "//div/img[@src='http://automationpractice.com/img/p/1/2/12-home_default.jpg']";
     private String continueShoppingButton = "//span[@title='Continue shopping']";
     private String checkCard = "//span[@class='ajax_cart_quantity']";

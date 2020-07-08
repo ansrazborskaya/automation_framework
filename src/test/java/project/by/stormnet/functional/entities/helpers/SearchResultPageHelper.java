@@ -9,7 +9,7 @@ public class SearchResultPageHelper {
         return searchResultPage.getResultsSizePerPage();
     }
 
-    public SearchResultPageHelper addToCard(){
+    public SearchResultPageHelper addToCard() {
         searchResultPage.clickAddToCardButton();
         searchResultPage.clickContinueShoppingButton();
         searchResultPage.checkCard();
@@ -20,7 +20,7 @@ public class SearchResultPageHelper {
         return searchResultPage.checkCard();
     }
 
-    public CardProductHelper goProductCard(){
+    public CardProductHelper goProductCard() {
         searchResultPage.clickCardProductButton();
         return new CardProductHelper();
     }

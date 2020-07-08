@@ -2,10 +2,10 @@ package project.by.stormnet.functional.entities.helpers;
 
 import project.by.stormnet.functional.entities.pages.CardProduct;
 
-public class CardProductHelper extends AbstractHelper{
+public class CardProductHelper extends AbstractHelper {
     private CardProduct cardProduct = new CardProduct();
 
-    public CardProductHelper fillFilter(String quantity){
+    public CardProductHelper fillFilter(String quantity) {
         cardProduct.fillQuantityField(quantity);
         cardProduct.clickDropdown();
         cardProduct.chooseColor();
@@ -13,7 +13,7 @@ public class CardProductHelper extends AbstractHelper{
         return this;
     }
 
-    public CardProductHelper addToCard(){
+    public CardProductHelper addToCard() {
         cardProduct.clickSubmitButton();
 
         return this;
@@ -26,7 +26,7 @@ public class CardProductHelper extends AbstractHelper{
         return result;
     }
 
-    public CardProductHelper addToWishlist(){
+    public CardProductHelper addToWishlist() {
         cardProduct.addWishlist();
         return this;
     }
@@ -38,12 +38,12 @@ public class CardProductHelper extends AbstractHelper{
         return result;
     }
 
-    public CardProductHelper changeQuantityPlus(){
+    public CardProductHelper changeQuantityPlus() {
         cardProduct.clickQuantityPlus();
         return this;
     }
 
-    public CardProductHelper changeQuantityMinus(){
+    public CardProductHelper changeQuantityMinus() {
         cardProduct.clickQuantityMinus();
         return this;
     }
@@ -54,15 +54,17 @@ public class CardProductHelper extends AbstractHelper{
         return result;
     }
 
-    public boolean closeWishlistWindow(){
-       cardProduct.clickCloseButton();
+    public boolean closeWishlistWindow() {
+        cardProduct.clickCloseButton();
         return true;
     }
-    public CardProductHelper closeAddToCartWindow(){
+
+    public CardProductHelper closeAddToCartWindow() {
         cardProduct.clickCloseWindowButton();
         return this;
     }
-    public CardProductHelper sendComment(String title,String text){
+
+    public CardProductHelper sendComment(String title, String text) {
         cardProduct.clickReviewButton();
         cardProduct.fillReviewTitleField(title);
         cardProduct.fillReviewTextField(text);
@@ -76,14 +78,13 @@ public class CardProductHelper extends AbstractHelper{
         return result;
     }
 
-    public CardProductHelper closeCommentWindow(){
+    public CardProductHelper closeCommentWindow() {
         cardProduct.clickOkButton();
         return this;
     }
 
 
-
-    public ShoppingCartPageHelper goToCart(){
+    public ShoppingCartPageHelper goToCart() {
         cardProduct.clickProceedCheckoutButton();
         return new ShoppingCartPageHelper();
     }

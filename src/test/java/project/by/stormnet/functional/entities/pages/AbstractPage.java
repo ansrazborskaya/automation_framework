@@ -4,7 +4,6 @@ package project.by.stormnet.functional.entities.pages;
 import by.stormnet.core.FrameworkCore;
 import by.stormnet.core.utils.GenerateData;
 import by.stormnet.core.utils.PauseLength;
-import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -31,7 +30,7 @@ public class AbstractPage extends FrameworkCore {
         driver.get(URL);
     }
 
-    public void openBrowser(){
+    public void openBrowser() {
         driver = getInstance();
     }
 
@@ -44,19 +43,19 @@ public class AbstractPage extends FrameworkCore {
         }
     }
 
-    public String generateEmailAddress(){
-       return generateData.generateRandomEmail();
+    public String generateEmailAddress() {
+        return generateData.generateRandomEmail();
     }
 
-    public String generateRandomValue(){
+    public String generateRandomValue() {
         return generateData.generateRandomValue();
     }
 
-    public String generateRandomPostcode(){
+    public String generateRandomPostcode() {
         return generateData.generateRandomPostcode();
     }
 
-    public String generateRandomPhone(){
+    public String generateRandomPhone() {
         return generateData.generateRandomPhone();
     }
 
@@ -104,7 +103,7 @@ public class AbstractPage extends FrameworkCore {
         return driver.findElements(By.xpath(xpath));
     }
 
-    public void placeCursor(String xpath){
+    public void placeCursor(String xpath) {
         Actions action = new Actions(driver);
         action.moveToElement(getElement(xpath)).perform();
     }

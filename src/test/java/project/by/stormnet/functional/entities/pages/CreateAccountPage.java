@@ -116,6 +116,12 @@ public class CreateAccountPage extends AbstractPage {
         return getCreateAccountPage();
     }
 
+    @Step("Clear MyAddress Field")
+    public CreateAccountPage clearMyAddressField() {
+        getElement(myAddressField).clear();
+        return getCreateAccountPage();
+    }
+
     @Step("CLick register button")
     public MyAccountPage clickRegisterButton() {
         getElement(registerButton).click();
